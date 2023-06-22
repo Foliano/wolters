@@ -33,13 +33,19 @@ export class ErrorInterceptorService {
         if (!(error instanceof HttpErrorResponse)) {
           return throwError(error);
         }
-        if (error.status == 404) {
-          alert('Nie znaleziono');
-          this._router.navigateByUrl('/video');
-        } else if (error.status == 500) {
-          alert('Błąd serwera. Spróbuj ponownie później');
+        switch(error.status) {
+          case 404:
+          case 0:
+            alert('Nie znaleziono');
+            this._router.navigateByUrl('/video');
+            break;
+          case 500:
+            alert('Błąd serwera. Spróbuj ponownie później');
+            break;
+          default:
+            alert('Wystapił nieznany błąd');
         }
-        return throwError(error);
+        return throwError(() => error)
       })
     );
   }

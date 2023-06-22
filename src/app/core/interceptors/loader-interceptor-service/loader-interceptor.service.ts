@@ -7,7 +7,7 @@ import {
   HttpRequest,
   HttpResponse
 } from '@angular/common/http';
-import { Observable, throwError, timer } from 'rxjs';
+import { Observable, of, throwError, timer } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 
@@ -51,7 +51,7 @@ export class LoaderInterceptorService {
       }),
       catchError((error: HttpErrorResponse) => {
         this.howLongLoader();
-        return throwError(error);
+        return throwError(() => error)
       })
     );
   }

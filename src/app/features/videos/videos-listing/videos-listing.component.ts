@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { BehaviorSubject, catchError, debounceTime, distinctUntilChanged, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, catchError, debounceTime, distinctUntilChanged, of, switchMap, tap } from 'rxjs';
 import { VideoListingItem } from 'src/app/core/interfaces/video-listing-item';
 import { VideoActiveDateComponent } from './components/video-active-date/video-active-date.component';
 import { VideoGenresComponent } from './components/video-genres/video-genres.component';
@@ -18,8 +18,8 @@ import { VideosListingService } from './services/videos-listing.service';
   templateUrl: './videos-listing.component.html',
   styleUrls: ['./videos-listing.component.scss'],
 })
-export class VideosListingComponent implements OnInit {
-
+export class VideosListingComponent implements OnInit, OnDestroy {
+  private _observeDate$: Subscription;
   videos: VideoListingItem[] = [];
   filteredVideos: any[] = [];
   genres: string[] = [];
@@ -34,8 +34,12 @@ export class VideosListingComponent implements OnInit {
     this._observeDate();
   }
 
+  ngOnDestroy() {
+    this._observeDate$.unsubscribe();
+  }
+
   private _observeDate() {
-    this.videosActiveDateService.activeDate$.pipe(
+    this._observeDate$ = this.videosActiveDateService.activeDate$.pipe(
       distinctUntilChanged(),
       debounceTime(100),
       tap(() => this.loading$.next(true)),

@@ -19,7 +19,7 @@ import { VideosListingService } from './services/videos-listing.service';
   styleUrls: ['./videos-listing.component.scss'],
 })
 export class VideosListingComponent implements OnInit, OnDestroy {
-  private _observeDate$: Subscription;
+  private _observeDate$!: Subscription;
   videos: VideoListingItem[] = [];
   filteredVideos: any[] = [];
   genres: string[] = [];

@@ -1,0 +1,5 @@
+<div id="genres-buttons" *ngIf="genres.length">
+  Filtry:
+  <button class="genre-btn" *ngFor="let genre of genres; let index" [class.active]="genre === activeGenre" (click)="filterByGenre(genre)">{{ genre }}</button>
+  <button id="clear-filters" *ngIf="activeGenre" (click)="clearFilter()">&times; Usuń filtr</button>
+</div>

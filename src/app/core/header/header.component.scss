@@ -1,0 +1,11 @@
+:host {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+  box-shadow: 0 0 8px 3px rgba(#000, .3);
+  padding: var(--padding);
+  display: flex;
+  align-items: center;
+  min-height: 70px;
+}

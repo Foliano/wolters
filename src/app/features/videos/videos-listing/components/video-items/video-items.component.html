@@ -1,0 +1,7 @@
+<div class="grid">
+  <app-video-item routerLink="details/{{video.embeddedId}}" *ngFor="let video of videoItems; trackBy: trackVideos" [videoItem]="video"></app-video-item>
+</div>
+
+<div id="empty-state" [hidden]="videoItems.length">
+  No tv shows for this day
+</div>

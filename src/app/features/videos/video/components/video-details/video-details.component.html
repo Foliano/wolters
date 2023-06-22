@@ -1,0 +1,18 @@
+<div>
+  Typ: <strong>{{ video.type }}</strong>
+</div>
+<div>
+  Status: <strong>{{ video.status }}</strong>
+</div>
+<div *ngIf="video.genres?.length">
+  Genres: <strong>{{ video.genres | appJoin }}</strong>
+</div>
+<div>
+  Average : <strong>{{ video.rating?.average }} / 10</strong>
+</div>
+<div *ngIf="video.officialSite">
+  OfficialSite: <a [href]="video.officialSite" title="officialSite"><strong>{{ video.officialSite }}</strong></a>
+</div>
+<div *ngIf="video.premiered">
+  Premiered: <strong>{{ video.premiered | date : 'dd.MM.yyyy' }}</strong>
+</div>

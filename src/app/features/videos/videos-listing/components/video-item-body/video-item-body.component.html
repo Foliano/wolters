@@ -1,0 +1,8 @@
+<div class="card-content">
+  <h2 class="card-title">{{ videoItem.name }}</h2>
+  <div class="row">
+    <p class="card-season">Sezon {{ videoItem.season }}</p>
+    <p class="card-time">Godzina: {{ videoItem.airstamp | date : 'HH:mm' }}</p>
+  </div>
+  <div class="card-description" [innerHtml]="videoItem.summary"></div>
+</div>

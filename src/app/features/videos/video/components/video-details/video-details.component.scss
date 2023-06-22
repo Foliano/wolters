@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  padding: var(--padding);
+  background-color: rgba(#000, .05);
+  min-width: 300px;
+}
+
+div:not(:last-child) {
+  margin-bottom: 10px;
+}

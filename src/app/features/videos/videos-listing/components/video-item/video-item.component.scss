@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px #D1D5DF7F;
+  overflow: hidden;
+  @media(hover: hover) {
+    &:hover ::ng-deep {
+      .card-image {
+        width: calc(100% + 30px);
+      }
+      .card-title {
+        color: blue;
+      }
+    }
+  }
+}
+

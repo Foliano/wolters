@@ -1,0 +1,5 @@
+<button id="date-picker">
+  {{ activeDate$ | async | date : 'dd.MM.yyyy' }}
+  &#x25BC;
+  <input type="date" [value]="activeDate$ | async" (change)="getVideos($event)" required>
+</button>

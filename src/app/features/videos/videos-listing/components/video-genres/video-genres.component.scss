@@ -1,0 +1,33 @@
+#genres-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: var(--padding);
+  align-items: center;
+  min-height: 36px;
+}
+
+.genre-btn {
+  color: #fff;
+  margin-right: 5px;
+  &:first-child {
+    margin-left: 5px;
+  }
+  &:nth-child(3n) {
+    background-color: #405cf5;
+  }
+  &:nth-child(3n + 1) {
+    background-color: #e62143;
+  }
+  &:nth-child(3n + 2) {
+    background-color: #13aa52;
+  }
+  opacity: .6;
+  &.active {
+    opacity: 1;
+  }
+}
+
+
+#clear-filters {
+  margin-left: auto;
+}

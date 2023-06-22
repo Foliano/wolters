@@ -1,0 +1,10 @@
+<div class="container">
+  <app-video-active-date></app-video-active-date>
+  <div [hidden]="loading$ | async">
+    <app-video-genres (clearFilter$)="clearFilter()" (filterByGenre$)="filterByGenre($event)" [genres]="genres"></app-video-genres>
+    <app-video-items [videoItems]="filteredVideos"></app-video-items>
+  </div>
+  <div id="loader" *ngIf="loading$ | async">
+    Ładowanie...
+  </div>
+</div>

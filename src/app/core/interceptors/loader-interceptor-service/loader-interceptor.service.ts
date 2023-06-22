@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpRequest,
   HttpResponse
 } from '@angular/common/http';
-import { Observable, timer } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, throwError, timer } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -48,6 +49,10 @@ export class LoaderInterceptorService {
           this.howLongLoader();
         }
       }),
+      catchError((error: HttpErrorResponse) => {
+        this.howLongLoader();
+        return throwError(error);
+      })
     );
   }
 }
